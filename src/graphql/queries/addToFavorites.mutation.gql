@@ -1,0 +1,13 @@
+mutation AddToFavorites($character: CharacterInput!) {
+	addToFavorites(character: $character) @client {
+		id
+		name
+		gender
+		species
+		episode {
+			id
+			episode
+		}
+		image
+	}
+}

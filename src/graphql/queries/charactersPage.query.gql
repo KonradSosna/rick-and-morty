@@ -1,0 +1,15 @@
+query Characters($page: Int!) {
+	characters(page: $page) {
+		results {
+			gender
+			species
+			episode {
+				id
+				episode
+			}
+			id
+			name
+			image
+		}
+	}
+}

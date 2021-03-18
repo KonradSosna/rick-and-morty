@@ -1,0 +1,365 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#app {
+	font-family: 'Poppins', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: rgba(169, 177, 189, 1);
+}
+.header {
+	height: 134px;
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+.header::before {
+	content: '';
+	position: absolute;
+	display: block;
+	z-index: -2;
+	border-bottom: 1px solid rgb(229, 234, 244);
+	left: 0;
+	top: 0;
+	height: 134px;
+	width: 100%;
+}
+.logo {
+	width: 240px;
+	height: 70px;
+}
+.search {
+	margin-left: 80px;
+	border: 1px solid rgba(169, 177, 189, 1);
+	border-radius: 12px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 150%;
+	color: rgba(169, 177, 189, 1);
+}
+.searchfor {
+	display: flex;
+}
+.searchtext {
+	padding: 0 20px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.search select {
+	font-family: 'Poppins', sans-serif;
+	outline: none;
+	font-size: 16px;
+	color: rgba(169, 177, 189, 1);
+	border: 1px solid rgba(169, 177, 189, 1);
+	width: 128px;
+	padding-left: 10px;
+	cursor: pointer;
+	height: 56px;
+}
+
+.search input[type='text'],
+.search input[type='number'] {
+	border: none;
+	outline: none;
+	height: 54px;
+	font-family: 'Poppins', sans-serif;
+	outline: none;
+	font-size: 16px;
+	padding-left: 10px;
+	width: 203px;
+}
+.search button {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 0 5px;
+}
+
+option {
+	height: 56px;
+}
+#navbar {
+	height: 78px;
+}
+
+#navlist {
+	list-style-type: none;
+	display: flex;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+}
+
+#navlist a {
+	text-decoration: none;
+	color: rgba(17, 176, 200, 1);
+}
+
+#navlist li {
+	margin: 0 15px;
+	color: rgba(17, 176, 200, 1);
+}
+
+#navlist li:hover {
+	border-bottom: 3px solid rgba(17, 176, 200, 1);
+	cursor: pointer;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 22px;
+	letter-spacing: 0em;
+	color: rgba(169, 177, 189, 1);
+	text-transform: capitalize;
+}
+
+#mainTabele thead::before {
+	content: '';
+	position: absolute;
+	display: block;
+	z-index: -2;
+	background-color: rgba(229, 234, 244, 0.7);
+	left: 0;
+	height: 58px;
+	width: 100%;
+}
+
+#mainTabele tbody tr::after {
+	content: '';
+	position: absolute;
+	display: block;
+	z-index: -2;
+	left: 0;
+	border-bottom: 1px solid rgba(229, 234, 244, 1);
+	width: 100%;
+}
+
+table th {
+	text-align: left;
+	background: rgba(229, 234, 244, 0.25);
+	color: rgba(169, 177, 189, 1);
+	padding: 8px;
+	min-width: 30px;
+	height: 54px;
+}
+
+table td {
+	text-align: left;
+	border-bottom: 1px solid rgba(229, 234, 244, 1);
+	height: 84px;
+	width: 200px;
+	padding: 0 10px;
+}
+
+.fav {
+	background-color: transparent;
+	border: 2px solid rgba(17, 176, 200, 1);
+	border-radius: 8px;
+	color: rgba(17, 176, 200, 1);
+	height: 43px;
+	width: 43px;
+	outline: none;
+	cursor: pointer;
+}
+.btn:not(:disabled):not(.disabled) {
+	cursor: pointer;
+	background-color: transparent;
+	border: 2px solid rgba(17, 176, 200, 1);
+	border-radius: 8px;
+	color: rgba(17, 176, 200, 1);
+	height: 43px;
+	width: 43px;
+	outline: none;
+	display: flex;
+	justify-content: center;
+}
+.btn-info.disabled,
+.btn-info:disabled {
+	color: #fff;
+	background-color: #17a2b8;
+	border-color: #17a2b8;
+	border-radius: 8px;
+	height: 43px;
+	width: 43px;
+	display: flex;
+	justify-content: center;
+}
+.fav:hover {
+	background-color: rgba(17, 176, 200, 1);
+	color: #fff;
+}
+.fav:active {
+	transform: scale(1.1);
+}
+footer {
+	display: flex;
+	justify-content: flex-start;
+	height: 100px;
+	flex-direction: row;
+	margin: 10px;
+	align-items: center;
+	justify-content: flex-start;
+}
+footer button {
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
+	color: #a9b1bd;
+	border: 1px solid #a9b1bd;
+	border-radius: 4px;
+	outline: none;
+	cursor: pointer;
+	margin: 0 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+footer button:hover {
+	background-color: #0f8496;
+	color: #fff;
+}
+
+footer button:active {
+	transform: scale(1.1);
+}
+h1 {
+	font-family: 'Poppins', sans-serif !important;
+	color: #11b0c8;
+}
+
+.disabled {
+	color: transparent;
+	pointer-events: none;
+}
+.pagebutton.active {
+	background-color: #11b0c8;
+	color: #fff;
+}
+#wraper {
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+.paginationbt {
+	color: #11b0c8;
+}
+.paginationbt:disabled {
+	color: grey;
+}
+.paginationbt:disabled:hover {
+	color: black;
+	cursor: default;
+}
+.paginationbt:disabled:active {
+	transform: none;
+}
+
+@media (max-width: 768px) {
+	#mainTabele thead::before,
+	#mainTabele tbody tr::before {
+		content: none;
+	}
+
+	#mainTabele thead {
+		display: none;
+	}
+
+	#mainTabele tbody,
+	#mainTabele tr,
+	#mainTabele td {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	#mainTabele tbody tr td {
+		text-align: right;
+		padding-left: 50%;
+		position: relative;
+		height: 68px;
+	}
+	#mainTabele tr {
+		margin-bottom: 15px;
+		border: 1px solid rgba(229, 234, 244, 1);
+	}
+	#mainTabele td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 50%;
+		padding-left: 15px;
+		text-align: center;
+		font-weight: 800;
+	}
+
+	#mainTabele tbody tr td:last-child {
+		align-items: center;
+		width: 100%;
+		padding: 0;
+		height: 100%;
+	}
+	#navlist {
+		justify-content: center;
+	}
+	.btn:not(:disabled):not(.disabled),
+	.btn-info.disabled,
+	.btn-info:disabled {
+		width: 100%;
+	}
+	footer {
+		justify-content: center;
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+	.search {
+		margin-left: unset;
+	}
+	.header::before {
+		height: 176px;
+	}
+	.header {
+		height: unset;
+		margin: 10px 0;
+		display: flex;
+		flex-direction: column;
+	}
+	.logo {
+		margin: 10px 0;
+	}
+	.searchtext {
+		padding: 0;
+	}
+	.search select {
+		width: 80px;
+	}
+	.searchfor {
+		width: 50px;
+	}
+	#id {
+		display: none;
+	}
+	.search input[type='text'],
+	.search input[type='number'] {
+		width: 160px;
+	}
+}
+@media (max-width: 895px) {
+	.header {
+		justify-content: center;
+	}
+}

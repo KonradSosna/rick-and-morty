@@ -1,0 +1,13 @@
+query FavoriteCharacters {
+	favoriteCharacters @client {
+		id
+		name
+		gender
+		species
+		episode {
+			id
+			episode
+		}
+		image
+	}
+}

@@ -1,0 +1,18 @@
+query Characters {
+	characters {
+		results {
+			gender
+			species
+			episode {
+				id
+				episode
+			}
+			id
+			name
+			image
+		}
+		info {
+			pages
+		}
+	}
+}

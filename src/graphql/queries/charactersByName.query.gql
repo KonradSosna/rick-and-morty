@@ -1,0 +1,15 @@
+query characters($name: String!) {
+	characters(filter: { name: $name }) {
+		results {
+			id
+			name
+			gender
+			species
+			episode {
+				id
+				episode
+			}
+			image
+		}
+	}
+}
