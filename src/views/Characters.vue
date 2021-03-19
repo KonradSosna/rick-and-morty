@@ -217,7 +217,7 @@
 			<div style="display: flex;" v-if="identifier == '' && episode == '' && name != '' || identifier == '' && episode == '' && name == ''">
 				<button
 					class="paginationbt"
-					@click="goToPage(1)"
+					@click="goToPage(page=1,name)"
 					title="First page"
 					:disabled="page === 1"
 				>
@@ -253,7 +253,7 @@
 				</button>
 				<button
 					class="paginationbt"
-					@click="goToPage(34)"
+					@click="goToPage(page=34,name)"
 					title="Last page"
 					:disabled="page === 34"
 				>
