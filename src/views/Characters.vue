@@ -231,7 +231,7 @@
 				>
 					<span class="material-icons">&#xe5de;</span>
 				</button>
-				<template v-for="index in 34">
+				<template v-for="index in pages">
 					<button
 						class="pagebutton"
 						title="Go to this page"
@@ -247,20 +247,20 @@
 					class="paginationbt"
 					@click="pagenext(page,name)"
 					title="Next page"
-					:disabled="page === 34"
+					:disabled="page === pages"
 				>
 					<span class="material-icons">&#xe5df;</span>
 				</button>
 				<button
 					class="paginationbt"
-					@click="goToPage(page=34,name)"
+					@click="goToPage(page=pages,name)"
 					title="Last page"
-					:disabled="page === 34"
+					:disabled="page === pages"
 				>
 					<span class="material-icons">&#xe5dd;</span>
 				</button>
-        <div>
-          <span>Page number: {{ page }}</span>
+        <div style="display: flex; align-items: center;">
+          <span>Page {{ page }} of {{ pages }}</span>
         </div>
       </div>
 		</footer>
@@ -296,7 +296,7 @@ export default {
 		);
 
 		console.log(characters);
-		// console.log(info);
+		console.log(pages);
 
 		const { result: favResult } = useQuery(favoriteCharactersQuery);
 		const isInFavorites = (character) =>
@@ -321,6 +321,7 @@ export default {
 			page: 1,
 			identifier: '',
 			episode: '',
+      pages: this.pages,
 		};
 	},
 	methods: {
@@ -329,6 +330,7 @@ export default {
       const name = this.name;
       const identifier = this.identifier;
       const episode = this.episode;
+      var pages = this.pages;
 
 			console.log('Choice: ' + choice);
       console.log('Name: ' + name);
@@ -344,8 +346,7 @@ export default {
 				});
 
 				this.characters.splice(0);
-				this.characters.push(...data.characters.results);
-				console.log('Name: ' + this.name);
+        this.characters.push(...data.characters.results);
 			}
 
 			if (choice === 'Identifier') {
@@ -384,7 +385,6 @@ export default {
 					name,
 				},
 			});
-
 			this.characters.splice(0);
 			this.characters.push(...data.characters.results);
 		},
@@ -395,9 +395,11 @@ export default {
       this.episode = '';
     },
 		async pagenext(page,name) {
-			if (this.page > 34) this.page == 34;
-			else this.page++;
+      console.log(page);
       this.name = name;
+      this.page = page;
+			if (this.page > 34) this.page == 34;
+			else {this.page++;page++}
 
 			const { data } = await __APOLLO_CLIENT__.query({
 				query: charactersPageByName,

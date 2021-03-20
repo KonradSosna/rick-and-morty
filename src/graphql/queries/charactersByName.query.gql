@@ -1,5 +1,8 @@
 query characters($name: String!) {
 	characters(filter: { name: $name }) {
+		info {
+			pages
+		}
 		results {
 			id
 			name

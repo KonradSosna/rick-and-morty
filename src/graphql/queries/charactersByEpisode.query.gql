@@ -1,17 +1,17 @@
 query charactersByEpisode($episode: String!) {
-  episodes(filter: { episode: $episode }) {
-    results {
-      characters {
-        id
-        name
-        gender
-        species
-        episode {
-          id
-          episode
-        }
-        image
-      }
-    }
-  }
+	episodes(filter: { episode: $episode }) {
+		results {
+			characters {
+				id
+				name
+				gender
+				species
+				episode {
+					id
+					episode
+				}
+				image
+			}
+		}
+	}
 }
