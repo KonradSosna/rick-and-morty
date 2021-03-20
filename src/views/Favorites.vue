@@ -69,7 +69,7 @@
         </router-link>
       </div>
 
-      <div class="search">
+      <div class="search" :disabled="true">
         <div class="searchtext"><span>Search By</span></div>
         <select v-model="selected">
           <optgroup label="Select one">
@@ -87,6 +87,7 @@
             v-model="name"
             :placeholder="text + selected"
             ref="imie"
+            :disabled="true"
           />
         </form>
         <input
@@ -95,6 +96,7 @@
           type="text"
           v-model.number="identifier"
           :placeholder="text + selected"
+          :disabled="true"
         />
         <form id="todo-field" v-on:submit="submitForm">
           <!-- > Episode <!/--->
@@ -102,11 +104,12 @@
             v-if="selected == 'Episode'"
             id="searchbox"
             type="text"
-            v-model.number="pagenr"
+            v-model.number="episode"
             :placeholder="text + selected"
+            :disabled="true"
           />
         </form>
-        <button type="submit" @click="runQuery, submitForm">
+        <button type="submit">
           <span
             class="material-icons"
             style="color:rgba(17, 176, 200, 1);width: 24px;height: 24px;"
@@ -205,7 +208,9 @@ export default {
       name: null,
       selected: "Name",
       text: "Search for ",
-      pagenr: 2,
+      pagenr: null,
+      episode: null,
+      identifier:null,
       imie: "",
     }
   },
