@@ -81,16 +81,15 @@
 						id="searchbox"
 						type="text"
 						v-model="name"
-						:placeholder="text + selected"
-					/><button
+						:placeholder="text + selected"/>
+					<button
 						type="submit"
 						v-if="selected === 'Name'"
 						id="clear"
 						:class="{ disabled: !submitForm || !name }"
-						@click="submitForm()"
-					>
+						@click="submitForm()">
 						x
-					</button>
+						</button>
 				</form>
 				<form class="searchfor">
 					<input
@@ -142,14 +141,10 @@
 		<nav id="navbar">
 			<ul id="navlist">
 				<li>
-					<router-link to="/" :active="$route.path === '/'"
-						>All Characters</router-link
-					>
+					<router-link to="/" :active="$route.path === '/'">All Characters</router-link>
 				</li>
 				<li>
-					<router-link to="/favorites" :active="$route.path === '/favorites'"
-						>Favorites</router-link
-					>
+					<router-link to="/favorites" :active="$route.path === '/favorites'">Favorites</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -214,7 +209,8 @@
 		</table>
 
 		<footer>
-			<div style="display: flex;" v-if="identifier == '' && episode == '' && name != '' || identifier == '' && episode == '' && name == ''">
+			<div style="display: flex;flex-wrap: wrap;justify-content: center;" v-if="identifier == '' && episode == '' && name != '' || identifier == '' && episode == '' && name == ''">
+				<div style="display: flex;margin: 10px 0;">
 				<button
 					class="paginationbt"
 					@click="goToPage(page=1,name)"
@@ -259,9 +255,12 @@
 				>
 					<span class="material-icons">&#xe5dd;</span>
 				</button>
+				</div>
+
         <div style="display: flex; align-items: center;">
           <span>Page {{ page }} of {{ pages }}</span>
         </div>
+
       </div>
 		</footer>
 	</div>
@@ -321,21 +320,21 @@ export default {
 			page: 1,
 			identifier: '',
 			episode: '',
-      pages: this.pages,
+      		pages: this.pages,
 		};
 	},
 	methods: {
 		async runQuery() {
-			const choice = this.selected;
-      const name = this.name;
-      const identifier = this.identifier;
-      const episode = this.episode;
-      var pages = this.pages;
+		const choice = this.selected;
+		const name = this.name;
+		const identifier = this.identifier;
+		const episode = this.episode;
+		var pages = this.pages;
 
-			console.log('Choice: ' + choice);
-      console.log('Name: ' + name);
-      console.log('Id: ' + identifier);
-      console.log('Episode: ' + episode);
+		console.log('Choice: ' + choice);
+		console.log('Name: ' + name);
+		console.log('Id: ' + identifier);
+		console.log('Episode: ' + episode);
 
 			if (choice === 'Name') {
 				const { data } = await __APOLLO_CLIENT__.query({
@@ -346,7 +345,7 @@ export default {
 				});
 
 				this.characters.splice(0);
-        this.characters.push(...data.characters.results);
+        		this.characters.push(...data.characters.results);
 			}
 
 			if (choice === 'Identifier') {
@@ -415,7 +414,7 @@ export default {
 		},
 		async pageback(page,name) {
 			if (this.page <= 1) this.page == 1;
-			else this.page--;
+			else {this.page--;page--}
       this.name = name;
 
 			const { data } = await __APOLLO_CLIENT__.query({

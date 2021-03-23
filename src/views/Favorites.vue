@@ -86,7 +86,6 @@
             type="text"
             v-model="name"
             :placeholder="text + selected"
-            ref="imie"
             :disabled="true"
           />
         </form>
@@ -109,6 +108,12 @@
             :disabled="true"
           />
         </form>
+        <button
+						type="submit"
+						id="clear"
+						:class="{ disabled: !submitForm || !name }">
+						x
+						</button>
         <button type="submit">
           <span
             class="material-icons"
@@ -126,12 +131,12 @@
 
     <nav id="navbar">
       <ul id="navlist">
-        <router-link to="/" :active="$route.path === '/'">
-        <li>All Characters</li></router-link
-        >
-        <router-link to="/favorites" :active="$route.path === '/favorites'"
-          ><li>Favorites</li></router-link
-        >
+        <li>
+          <router-link to="/" :active="$route.path === '/'">All Characters</router-link>
+        </li>
+        <li>
+          <router-link to="/favorites" :active="$route.path === '/favorites'">Favorites</router-link>
+        </li>
       </ul>
     </nav>
 
@@ -211,7 +216,6 @@ export default {
       pagenr: null,
       episode: null,
       identifier:null,
-      imie: "",
     }
   },
   methods:{
