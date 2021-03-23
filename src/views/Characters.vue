@@ -153,7 +153,7 @@
 			Loading ...
 		</div>
 
-		<table id="mainTabele">
+		<table id="mainTable">
 			<thead>
 				<tr>
 					<th>Photo</th>
@@ -179,16 +179,18 @@
 					<td data-label="ID">{{ character.id }}</td>
 					<td data-label="Name">{{ character.name }}</td>
 					<td data-label="Gender">
-						{{ character.gender }}
-						<span v-if="character.gender == 'Male'" class="material-icons">
+						<div class="gender">
+							{{ character.gender }}
+						<span v-if="character.gender == 'Male'" class="material-icons gendericon">
 							&#xe58e;</span
 						>
-						<span v-if="character.gender == 'Female'" class="material-icons">
+						<span v-if="character.gender == 'Female'" class="material-icons gendericon">
 							&#xe590;</span
 						>
-						<span v-if="character.gender == 'unknown'" class="material-icons">
+						<span v-if="character.gender == 'unknown'" class="material-icons gendericon">
 							&#xf108;</span
 						>
+						</div>
 					</td>
 					<td data-label="Species">{{ character.species }}</td>
 					<td data-label="Episode">

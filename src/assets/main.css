@@ -127,7 +127,7 @@ table {
 	text-transform: capitalize;
 }
 
-#mainTabele thead::before {
+#mainTable thead::before {
 	content: '';
 	position: absolute;
 	display: block;
@@ -138,7 +138,7 @@ table {
 	width: 100%;
 }
 
-#mainTabele tbody tr::after {
+#mainTable tbody tr::after {
 	content: '';
 	position: absolute;
 	display: block;
@@ -163,6 +163,15 @@ table td {
 	height: 84px;
 	width: 200px;
 	padding: 0 10px;
+}
+
+.gender {
+	display: flex;
+	align-items: flex-end;
+}
+
+.gendericon {
+	margin: 0 5px;
 }
 
 table td:last-child {
@@ -273,35 +282,35 @@ h1 {
 }
 
 @media (max-width: 768px) {
-	#mainTabele thead::before,
-	#mainTabele tbody tr::before {
+	#mainTable thead::before,
+	#mainTable tbody tr::before {
 		content: none;
 	}
 
-	#mainTabele thead {
+	#mainTable thead {
 		display: none;
 	}
 
-	#mainTabele tbody,
-	#mainTabele tr,
-	#mainTabele td {
+	#mainTable tbody,
+	#mainTable tr,
+	#mainTable td {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	#mainTabele tbody tr td {
+	#mainTable tbody tr td {
 		text-align: right;
 		padding-left: 50%;
 		position: relative;
 		height: 68px;
 	}
-	#mainTabele tr {
+	#mainTable tr {
 		margin-bottom: 15px;
 		border: 1px solid rgba(229, 234, 244, 1);
 	}
-	#mainTabele td::before {
+	#mainTable td::before {
 		content: attr(data-label);
 		position: absolute;
 		left: 0;
@@ -311,7 +320,7 @@ h1 {
 		font-weight: 800;
 	}
 
-	#mainTabele tbody tr td:last-child {
+	#mainTable tbody tr td:last-child {
 		align-items: center;
 		width: 100%;
 		padding: 0;
