@@ -81,15 +81,17 @@
 						id="searchbox"
 						type="text"
 						v-model="name"
-						:placeholder="text + selected"/>
+						:placeholder="text + selected"
+					/>
 					<button
 						type="submit"
 						v-if="selected === 'Name'"
 						id="clear"
 						:class="{ disabled: !submitForm || !name }"
-						@click="submitForm()">
+						@click="submitForm()"
+					>
 						x
-						</button>
+					</button>
 				</form>
 				<form class="searchfor">
 					<input
@@ -141,10 +143,14 @@
 		<nav id="navbar">
 			<ul id="navlist">
 				<li>
-					<router-link to="/" :active="$route.path === '/'">All Characters</router-link>
+					<router-link to="/" :active="$route.path === '/'"
+						>All Characters</router-link
+					>
 				</li>
 				<li>
-					<router-link to="/favorites" :active="$route.path === '/favorites'">Favorites</router-link>
+					<router-link to="/favorites" :active="$route.path === '/favorites'"
+						>Favorites</router-link
+					>
 				</li>
 			</ul>
 		</nav>
@@ -181,15 +187,24 @@
 					<td data-label="Gender">
 						<div class="gender">
 							{{ character.gender }}
-						<span v-if="character.gender == 'Male'" class="material-icons gendericon">
-							&#xe58e;</span
-						>
-						<span v-if="character.gender == 'Female'" class="material-icons gendericon">
-							&#xe590;</span
-						>
-						<span v-if="character.gender == 'unknown'" class="material-icons gendericon">
-							&#xf108;</span
-						>
+							<span
+								v-if="character.gender == 'Male'"
+								class="material-icons gendericon"
+							>
+								&#xe58e;</span
+							>
+							<span
+								v-if="character.gender == 'Female'"
+								class="material-icons gendericon"
+							>
+								&#xe590;</span
+							>
+							<span
+								v-if="character.gender == 'unknown'"
+								class="material-icons gendericon"
+							>
+								&#xf108;</span
+							>
 						</div>
 					</td>
 					<td data-label="Species">{{ character.species }}</td>
@@ -211,59 +226,64 @@
 		</table>
 
 		<footer>
-			<div style="display: flex;flex-wrap: wrap;justify-content: center;" v-if="identifier == '' && episode == '' && name != '' || identifier == '' && episode == '' && name == ''">
+			<div
+				style="display: flex;flex-wrap: wrap;justify-content: center;"
+				v-if="
+					(identifier == '' && episode == '' && name != '') ||
+						(identifier == '' && episode == '' && name == '')
+				"
+			>
 				<div style="display: flex;margin: 10px 0;">
-				<button
-					class="paginationbt"
-					@click="goToPage(page=1,name)"
-					title="First page"
-					:disabled="page === 1"
-				>
-					<span class="material-icons">&#xe5dc;</span>
-				</button>
-				<button
-					class="paginationbt"
-					@click="pageback(page,name)"
-					title="Previous page"
-					:disabled="page === 1"
-				>
-					<span class="material-icons">&#xe5de;</span>
-				</button>
-				<template v-for="index in pages">
 					<button
-						class="pagebutton"
-						title="Go to this page"
-						v-bind:class="[index == page ? 'active' : '']"
-						v-if="index <= page + 1 && index >= page - 1"
-						@click="goToPage(index, name)"
-						:key="index"
+						class="paginationbt"
+						@click="goToPage((page = 1), name)"
+						title="First page"
+						:disabled="page === 1"
 					>
-						{{ index }}
+						<span class="material-icons">&#xe5dc;</span>
 					</button>
-				</template>
-				<button
-					class="paginationbt"
-					@click="pagenext(page,name)"
-					title="Next page"
-					:disabled="page === pages"
-				>
-					<span class="material-icons">&#xe5df;</span>
-				</button>
-				<button
-					class="paginationbt"
-					@click="goToPage(page=pages,name)"
-					title="Last page"
-					:disabled="page === pages"
-				>
-					<span class="material-icons">&#xe5dd;</span>
-				</button>
+					<button
+						class="paginationbt"
+						@click="pageback(page, name)"
+						title="Previous page"
+						:disabled="page === 1"
+					>
+						<span class="material-icons">&#xe5de;</span>
+					</button>
+					<template v-for="index in pages">
+						<button
+							class="pagebutton"
+							title="Go to this page"
+							v-bind:class="[index == page ? 'active' : '']"
+							v-if="index <= page + 1 && index >= page - 1"
+							@click="goToPage(index, name)"
+							:key="index"
+						>
+							{{ index }}
+						</button>
+					</template>
+					<button
+						class="paginationbt"
+						@click="pagenext(page, name)"
+						title="Next page"
+						:disabled="page === pages"
+					>
+						<span class="material-icons">&#xe5df;</span>
+					</button>
+					<button
+						class="paginationbt"
+						@click="goToPage((page = pages), name)"
+						title="Last page"
+						:disabled="page === pages"
+					>
+						<span class="material-icons">&#xe5dd;</span>
+					</button>
 				</div>
 
-        <div style="display: flex; align-items: center;">
-          <span>Page {{ page }} of {{ pages }}</span>
-        </div>
-
-      </div>
+				<div style="display: flex; align-items: center;">
+					<span>Page {{ page }} of {{ pages }}</span>
+				</div>
+			</div>
 		</footer>
 	</div>
 </template>
@@ -322,21 +342,21 @@ export default {
 			page: 1,
 			identifier: '',
 			episode: '',
-      		pages: this.pages,
+			pages: this.pages,
 		};
 	},
 	methods: {
 		async runQuery() {
-		const choice = this.selected;
-		const name = this.name;
-		const identifier = this.identifier;
-		const episode = this.episode;
-		var pages = this.pages;
+			const choice = this.selected;
+			const name = this.name;
+			const identifier = this.identifier;
+			const episode = this.episode;
+			//var pages = this.pages;
 
-		console.log('Choice: ' + choice);
-		console.log('Name: ' + name);
-		console.log('Id: ' + identifier);
-		console.log('Episode: ' + episode);
+			console.log('Choice: ' + choice);
+			console.log('Name: ' + name);
+			console.log('Id: ' + identifier);
+			console.log('Episode: ' + episode);
 
 			if (choice === 'Name') {
 				const { data } = await __APOLLO_CLIENT__.query({
@@ -345,9 +365,13 @@ export default {
 						name: this.name,
 					},
 				});
-
+				console.log(this.pages);
+				console.log(data.characters.info.pages);
 				this.characters.splice(0);
-        		this.characters.push(...data.characters.results);
+				this.characters.push(...data.characters.results);
+				//this.pages.push(...data.characters.info.pages);
+
+				this.page = 1;
 			}
 
 			if (choice === 'Identifier') {
@@ -378,7 +402,7 @@ export default {
 		async goToPage(page, name) {
 			this.page = page;
 			this.name = name;
-      
+
 			const { data } = await __APOLLO_CLIENT__.query({
 				query: charactersPageByName,
 				variables: {
@@ -390,40 +414,46 @@ export default {
 			this.characters.push(...data.characters.results);
 		},
 		submitForm() {
-      console.log('clear');
+			console.log('clear');
 			this.name = '';
-      this.identifier = '';
-      this.episode = '';
-    },
-		async pagenext(page,name) {
-      console.log(page);
-      this.name = name;
-      this.page = page;
+			this.identifier = '';
+			this.episode = '';
+		},
+		async pagenext(page, name) {
+			console.log(page);
+			this.name = name;
+			this.page = page;
 			if (this.page > 34) this.page == 34;
-			else {this.page++;page++}
+			else {
+				this.page++;
+				page++;
+			}
 
 			const { data } = await __APOLLO_CLIENT__.query({
 				query: charactersPageByName,
 				variables: {
 					page,
-          name,
+					name,
 				},
 			});
 
 			this.characters.splice(0);
 			this.characters.push(...data.characters.results);
-      console.log(page);
+			console.log(page);
 		},
-		async pageback(page,name) {
+		async pageback(page, name) {
 			if (this.page <= 1) this.page == 1;
-			else {this.page--;page--}
-      this.name = name;
+			else {
+				this.page--;
+				page--;
+			}
+			this.name = name;
 
 			const { data } = await __APOLLO_CLIENT__.query({
 				query: charactersPageByName,
 				variables: {
 					page,
-          name,
+					name,
 				},
 			});
 
